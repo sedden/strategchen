@@ -2,15 +2,10 @@ from django.db import models
 from django.db.models import permalink
 from django.conf import settings
 from tagging.fields import TagField
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill, TrimBorderColor, Adjust
 
 import tagging
-
-# Check if django-imagekit is installed and use imagekit's ImageModel
-# as the base model class if yes
-if 'imagekit' in settings.INSTALLED_APPS:
-    from imagekit.models import ImageModel as PhotoModel
-else:
-    from django.db.models import Model as PhotoModel
 
 
 class AudioSet(models.Model):
@@ -77,7 +72,7 @@ class PhotoSet(models.Model):
       return ('photo_set_detail', None, { 'slug': self.slug })
 
 
-class Photo(PhotoModel):
+class Photo(models.Model):
     """Photo model"""
     LICENSES = (
         ('http://creativecommons.org/licenses/by/2.0/',         'CC Attribution'),
@@ -89,7 +84,23 @@ class Photo(PhotoModel):
     )
     title = models.CharField(max_length=255)
     slug = models.SlugField()
-    photo = models.FileField(upload_to="photos")
+    photo = models.ImageField(upload_to="photos")
+    photo_thumbnail = ImageSpecField(source='photo',
+        processors=[ResizeToFill(136, 102),Adjust(color=0.0,sharpness=1.5)],
+        format='JPEG',
+        options={'quality': 60})
+    photo_thumbnail_hover = ImageSpecField(source='photo',
+        processors=[ResizeToFill(136, 102),Adjust(color=1.5,sharpness=1.5)],
+        format='JPEG',
+        options={'quality': 60})
+    photo_regular = ImageSpecField(source='photo',
+        processors=[ResizeToFill(296, 296)],
+        format='JPEG',
+        options={'quality': 60})
+    photo_display = ImageSpecField(source='photo',
+        processors=[ResizeToFill(800, 600)],
+        format='JPEG',
+        options={'quality': 60})
     taken_by = models.CharField(max_length=100, blank=True)
     license = models.URLField(blank=True, choices=LICENSES)
     description = models.TextField(blank=True)
@@ -122,11 +133,6 @@ class Photo(PhotoModel):
     @permalink
     def get_absolute_url(self):
         return ('photo_detail', None, { 'slug': self.slug })
-
-    class IKOptions:
-        # This inner class is where we define the ImageKit options for the model
-        spec_module = 'basic.media.specs'
-        image_field = 'photo'
 
 
 class VideoSet(models.Model):
@@ -169,3 +175,4 @@ class Video(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('video_detail', None, { 'slug': self.slug })
+

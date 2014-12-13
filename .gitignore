@@ -1,3 +1,6 @@
 *.pyc
 *~
-static/cache/
+strategchen/static/cache/
+strategchen/sitestatic/
+venv/
+strategchen.db

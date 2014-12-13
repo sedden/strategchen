@@ -5,7 +5,7 @@ from django.contrib.sitemaps import GenericSitemap
 from django.contrib.auth.decorators import login_required
 
 from blog.models import Entry
-from blog.feeds import LatestEntriesAtom
+#from blog.feeds import LatestEntriesAtom
 from flatpages.sitemaps import FlatPageSitemap
 
 archive_common = {
@@ -30,16 +30,16 @@ urlpatterns = patterns('',
 )
 
 # Debug? Serve static files!
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-           {
-            'document_root': settings.PRJ_DIR+'/static',
-            'show_indexes': True
-       }
-        ),
-        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    )
+#if settings.DEBUG:
+#    urlpatterns += patterns('',
+#        (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+#           {
+#            'document_root': settings.PRJ_DIR+'/static',
+#            'show_indexes': True
+#       }
+#        ),
+#        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+#    )
 
 # MarkItUp
 if 'markitup' in settings.INSTALLED_APPS:
@@ -77,15 +77,15 @@ if 'django.contrib.sitemaps' in settings.INSTALLED_APPS:
         ),
     )
 
-# Feeds
-if 'django.contrib.syndication' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
-        (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {
-            'feed_dict': {
-                'atom': LatestEntriesAtom,
-            } }
-        ),
-    )
+## Feeds
+#if 'django.contrib.syndication' in settings.INSTALLED_APPS:
+#    urlpatterns += patterns('',
+#        (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {
+#            'feed_dict': {
+#                'atom': LatestEntriesAtom,
+#            } }
+#        ),
+#    )
 
 # Blog
 if 'blog' in settings.INSTALLED_APPS:
