@@ -71,7 +71,7 @@ Datenbank-Update durchfuehren:
 
 Auf Datenbank verbinden:
 
-    heroku pg:psql --app strategchen HEROKU_POSTGRESQL_COBALT
+    heroku pg:psql --app strategchen HEROKU_POSTGRESQL_MAROON
 
 Datenbank Backup wiederherstellen:
 

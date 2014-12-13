@@ -4,3 +4,4 @@ strategchen/static/cache/
 strategchen/sitestatic/
 venv/
 strategchen.db
+*.dump
