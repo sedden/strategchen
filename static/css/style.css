@@ -1,0 +1,115 @@
+/*
+
+ Layout und Design für: 
+  strategchen http://www.strategchen.com
+
+ Author:
+  Stefan Jenkner <stefan@jenkner.org>
+
+*/
+
+.container_12 { margin: 0 auto; }
+
+/* Abkuerzungen */
+
+.right { text-align: right; }
+.left { text-align: left; }
+.center { text-align: center; }
+.justify { text-align: justify; }
+
+.alignright { float: right; }
+.alignleft { float: left; }
+
+.baseline { vertical-align: baseline; }
+.middle { vertical-align: middle; }
+.sub { vertical-align: super; }
+.text-top { vertical-align: text-top; }
+.text-bottom { vertical-align: text-bottom; }
+.top { vertical-align: top; }
+.bottom { vertical-align: bottom; }
+
+
+/* Allgemein */
+
+body { font-family: Cambria, serif; font-weight: normal; letter-spacing: normal; line-height: 1.5em; }
+
+html, body { margin: 0; padding: 0; height: 100%; }
+
+body { background: #fff url('/static/img/pattern.jpg'); }
+
+div#container { min-height: 100%; background: #fff url('/static/img/pattern_content.jpg'); }
+* html #container { min-height: 100%; }
+
+.content { margin-bottom: 20px; }
+.content .meta { margin-top: 1.2em; }
+
+h3 { margin-top: 20px; }
+
+#header *,
+#footer *,
+#logo * { border: none; }
+
+#header { margin-top: 75px; margin-bottom: 50px; }
+
+a,
+a:hover,
+a:visited { color: #c30; text-decoration: none;  }
+
+h1 a, h1 a:hover, h1 a:visited,
+h2 a, h2 a:hover, h2 a:visited,
+h3 a, h3 a:hover, h3 a:visited,
+h4 a, h4 a:hover, h4 a:visited { color: #000; }
+
+a:hover,
+h2 a:hover { text-decoration: underline; }
+
+blockquote { padding: 0; margin: 0 0 0 30px; display:block; width: 40%; float: right; color: #444; }
+
+textarea { width: 100%; }
+
+p, h2, h3, h4 { margin-bottom: 5px; }
+h1 { margin-bottom: 8px; }
+
+/* Menu, Listen und Navigation */
+
+ul#navigation { list-style-type: none; margin: 0; padding: .5em 0; }
+ul#navigation li { display: block; padding: .2em 0; text-align: center; text-decoration: none; }
+
+#sidebar ul ul li { padding-top: 5px; padding-bottom: 5px; }
+
+
+/* Schriften */
+
+h1 { font-size: 36px; }
+h2,
+h3 { font-size: 18px; padding-top: 5px; padding-bottom: 5px; }
+h4 { font-size: 16px; font-style: italic; font-weight: normal; color: #c30; }
+
+p,
+em { font-size: 14px; }
+
+small,
+ul#navigation li,
+#sidebar ul ul li { font-size: 14px; line-height: 1.3em; }
+
+blockquote { font-style: italic; text-align: justify; }
+
+
+.meta { color: #999; } 
+.meta a { color: #c30; }
+
+.tag-1 { font-size: 12px; }
+.tag-2 { font-size: 13px; }
+.tag-3 { font-size: 14px; }
+.tag-4 { font-size: 15px; }
+.tag-5 { font-size: 16px; }
+.tag-6 { font-size: 17px; }
+.tag-7 { font-size: 18px; }
+.tag-8 { font-size: 19px; }
+
+
+/* DISQUS */
+.dsq-dc-logo,
+.dsq-item-trackback,
+.dsq-options { display: none !important; }
+

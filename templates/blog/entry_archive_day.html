@@ -1,0 +1,5 @@
+{% extends "blog/entry_archive.html" %}
+
+{% block title %}&bull; Blog &bull; {{ day|date:"d. F Y" }}{% endblock %}
+{% block description %}Tagesarchiv für {{ day|date:"l, \d\e\n d. F Y" }}{% endblock %}
+{% block pagetitle %}{{ day|date:"l \<\b\r \/\>d. F Y"|safe }}{% endblock %}

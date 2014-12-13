@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load markup tagging_tags inlines %}
+
+{% block title %}&bull; {{ flatpage.title }}{% endblock %}
+{% block robots %}index,follow{% endblock %}
+{% block description %}{{ flatpage.title }}{% endblock %}
+{% block keywords %}{% tags_for_object flatpage as tags %}{{ tags|join:", " }}{% endblock %}
+
+{% block pagetitle %}{{ flatpage.title }}
+	{% if user.is_authenticated %}
+		(<a href="/admin/flatpages/flatpage/{{ flatpage.id }}/">Seite bearbeiten</a>)
+	{% endif %}
+{% endblock %}
+
+
+{% block pagecontent %}
+
+	{{ flatpage.content|markdown|render_inlines }}
+
+	<div class="clear">&nbsp;</div>
+
+{% endblock %}

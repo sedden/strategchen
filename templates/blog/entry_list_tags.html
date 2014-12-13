@@ -1,0 +1,19 @@
+{% extends "blog/entry_archive.html" %}
+
+{% block title %}&bull; Blog &bull; Schlagwort: {{ tag }}{% endblock %}
+{% block description %}Beitr&auml;ge beschlagwortet mit &#8220;{{ tag }}&#8221;{% endblock %}
+{% block pagetitle %}Beitr&auml;ge beschlagwortet mit &#8220;{{ tag }}&#8221;{% endblock %}
+
+{% block pagecontent %}
+
+	{% if related_tags %}
+	<p>&Auml;hnliche Schlagwörter:
+	{% for related_tag in related_tags %}
+	<span><a rel="tag" href="/blog/{{ related_tag.name }}/">{{ related_tag.name }}</a></span>
+	{% endfor %}
+	</p>
+	{% endif %}
+
+	{{ block.super }}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}&bull; {{ title }}{% endblock %}
+{% block description %}{{ title }}{% endblock %}
+
+{% block pagetitle %}&nbsp;{% endblock %}
+{% block pagecontent %}
+
+	<h3>Bye! - {{ title }}</h3>
+	<p>Vielen Dank und auf Wiedersehen!</p>
+	<p><a href="/login/">Erneut anmelden?</a></p>
+
+{% endblock %}

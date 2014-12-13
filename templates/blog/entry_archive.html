@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load i18n disqus_tags %}
+
+{% block title %}&bull; Blog{% endblock %}
+{% block description %}Die letzten Einträge im Blog{% endblock %}
+{% block robots %}noindex,follow{% endblock %}
+
+{% block pagetitle %}&nbsp;{% endblock %}
+{% block pagecontent %}
+
+{% for object in object_list %}
+	<h3><a property="dc:title" href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+	{% if user.is_authenticated %}
+		<a href="/admin/blog/entry/{{ object.id }}/" title="Beitrag bearbeiten">(bearbeiten)</a>
+	{% endif %}
+	</h3>
+	{% include "blog/entry.html" %}
+	{% disqus_num_replies %}
+{% endfor %}
+
+{% if page_obj %}
+	<ul id="navigation">
+        {% if page_obj.has_previous %}
+                <li class="alignleft">
+                &laquo; <a href="/blog/page/{{ page_obj.previous_page_number }}/">jüngere Posts</a>
+                </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+                <li class="alignright">
+                <a href="/blog/page/{{ page_obj.next_page_number }}/">ältere Posts</a> &raquo; 
+                </li>
+        {% endif %}
+	</ul>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load markup i18n tagging_tags disqus_tags inlines %}
+
+	<span class="body">{{ object.body_html|render_inlines }}</span>
+
+	{% tags_for_object object as tags %}
+	{% if tags %}
+	<p class="meta"><small>Schlagw&ouml;rter:
+	{% for tag in tags %}
+		<span><a rel="tag" href="/blog/{{ tag.name }}/">{{ tag.name }}</a></span>
+	{% endfor %}
+	</small></p>
+	{% endif %}
+
+	<p class="meta">
+	Der Beitrag wurde am {{ object.date|date:"d.m.Y" }} unter dem Titel
+	&#8220;{{ object.title  }}&#8221; veröffentlicht.
+	{% if object.enable_comments %}
+		<a href="http://www.strategchen.com{{ object.get_absolute_url }}#disqus_thread">Kommentar abgeben</a>.
+	{% endif %}
+	</p>
+
+	<div class="clear">&nbsp;</div>

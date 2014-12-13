@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}&bull; Anmelden{% endblock %}
+{% block description %}&bull; Anmeldung für registrierte Nutzer{% endblock %}
+
+{% block pagetitle %}&nbsp;{% endblock %}
+{% block pagecontent %}
+
+	{% if form.errors %}
+
+		<h3>Anmeldung fehlgeschlagen</h3>
+		<p>Benutzername und Passwort passen nicht, bitte erneut versuchen!</p>
+
+	{% else %}
+
+		<h3>Anmelden</h3>
+
+		{% if next %}
+		<p>Dieser Bereiche der Webseite ist nur für registrierte Nutzer zugänglich.</p>
+		{% endif %}
+
+		<p>Zum Anmelden bitte Benutzername und Passwort eingeben.</p>
+
+		<form method="post" action="{% url django.contrib.auth.views.login %}" class="uniForm">
+		{% include "form.html" %}
+		<input type="submit" value="Anmelden" />
+		<input type="hidden" name="next" value="{{ next }}" />
+		</form>
+	{% endif %}
+
+{% endblock %}

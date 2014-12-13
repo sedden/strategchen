@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load disqus_tags %}
+
+{% block title %}&bull; {{ object.title }}{% endblock %}
+{% block robots %}index,nofollow{% endblock %}
+{% block description %}{{ object.title }}{% endblock %}
+{% block author %}{{ object.author.first_name }} {{ object.author.last_name }}{% endblock %}
+{% block keywords %}{{ object.tags }}{% endblock %}
+
+{% block content %}
+
+	<ul id="navigation">
+	        {% if object.get_previous_public_by_date %}
+	                <li class="alignleft">
+	                &laquo; <a href="{{ object.get_previous_public_by_date.get_absolute_url }}">{{ object.get_previous_public_by_date.title  }}</a>
+	                </li>
+	        {% endif %}
+	        {% if object.get_next_public_by_date %}
+	                <li class="alignright">
+	                <a href="{{ object.get_next_public_by_date.get_absolute_url }}">{{ object.get_next_public_by_date.title  }}</a> &raquo; 
+	                </li>
+	        {% endif %}
+	</ul>
+	<div class="clear">&nbsp;</div>
+	<!--
+	-->
+
+	<h2><a property="dc:title" href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+	{% if user.is_authenticated %}
+		<a href="/admin/blog/entry/{{ object.id }}/" title="Beitrag bearbeiten">(bearbeiten)</a>
+	{% endif %}
+	</h2>
+
+	{% include "blog/entry.html" %}
+
+	<div class="clear">&nbsp;</div>
+
+	{% if object.enable_comments %}
+	<div class="grid_6 alpha omega">
+	{% disqus_show_comments %}
+	</div>
+	{% endif %}
+
+	<div class="clear">&nbsp;</div>
+{% endblock %}

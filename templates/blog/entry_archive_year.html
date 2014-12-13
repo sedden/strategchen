@@ -1,0 +1,21 @@
+{% extends "blog/entry_archive.html" %}
+
+{% block title %}&bull; Blog &bull; {{ year }}{% endblock %}
+{% block description %}Jahresarchiv für {{ year }}{% endblock %}
+
+{% block pagetitle %}{{ year }}{% endblock %}
+{% block pagecontent %}
+
+	{% for object in object_list %}
+
+	{% ifchanged object.date.month %} 
+	{% if not forloop.first %}</ul>{% endif %}
+	<h3>{{ object.date|date:"F Y" }}</h3><ul>
+	{% endifchanged %}
+
+	<li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+
+	{% endfor %}
+	</ul>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% if object.display %}
+<!--
+<a rel="lightbox" href="{{ object.display.url }}">
+-->
+<img
+	src="{{ object.thumbnail.url }}"
+	width="{{ object.thumbnail.width }}"
+	height="{{ object.thumbnail.height }}"
+	alt="{{ object.title }}"
+	title="{{ object.title }}" />
+<!--
+</a>
+-->
+{% else %}
+<img src="{{ object.url }}" title="{{ object.title }}" alt="{{ object.title }}" />
+{% endif %}

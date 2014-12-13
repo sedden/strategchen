@@ -1,0 +1,13 @@
+{% load feed cache %}
+
+{% cache 18600 twitter %}
+<ul>
+{% get_feed http://twitter.com/statuses/user_timeline/84623041.rss as twitter %}
+{% for entry in twitter|slice:":2" %}
+<li>
+	{{ entry.description|slice:"13:"|urlize }}
+	<em><small>({{ entry.date|timesince }} alt)</small></em>
+</li>
+{% endfor %}
+</ul>
+{% endcache %}
