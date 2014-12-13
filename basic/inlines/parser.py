@@ -25,9 +25,9 @@ def inlines(value, return_list=False):
         for inline in content.findAll('inline'):
             rendered_inline = render_inline(inline)
             if rendered_inline:
-                inline.replaceWith(render_to_string(rendered_inline['template'], rendered_inline['context']))
+                inline.replaceWith(BeautifulStoneSoup(render_to_string(rendered_inline['template'], rendered_inline['context'])))
             else:
-                inline.replaceWith('')
+                inline.replaceWith(BeautifulStoneSoup(''))
         return mark_safe(content)
 
 
