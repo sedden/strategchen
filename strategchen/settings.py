@@ -59,14 +59,20 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-#MEDIA_ROOT = path.join(PRJ_DIR,'static')
+# Media Storage
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_SECURE_URLS = False
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+#MEDIA_ROOT = path.join(PRJ_DIR,'static/media')
+MEDIA_URL = 'http://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+#MEDIA_URL = 'http://%s.s3-website.eu-west-1.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+#MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'w=!f@&2n-573my!76!jkzw*=ajp8z#srx-f31yi9+bdp6^$np9'
@@ -136,6 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.sitemaps',
     'django.contrib.syndication',
+    'storages',
     'disqus',
     'reversion',
     'blog',
