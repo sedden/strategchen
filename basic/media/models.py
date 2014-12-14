@@ -3,7 +3,7 @@ from django.db.models import permalink
 from django.conf import settings
 from tagging.fields import TagField
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill, TrimBorderColor, Adjust
+from imagekit.processors import ResizeToFill, TrimBorderColor, Adjust, ResizeToFit
 
 import tagging
 
@@ -86,21 +86,17 @@ class Photo(models.Model):
     slug = models.SlugField()
     photo = models.ImageField(upload_to="photos")
     photo_thumbnail = ImageSpecField(source='photo',
-        processors=[ResizeToFill(136, 102),Adjust(color=0.0,sharpness=1.5)],
+        processors=[ResizeToFit(460),Adjust(color=1.1)],
         format='JPEG',
-        options={'quality': 60})
-    photo_thumbnail_hover = ImageSpecField(source='photo',
-        processors=[ResizeToFill(136, 102),Adjust(color=1.5,sharpness=1.5)],
-        format='JPEG',
-        options={'quality': 60})
-    photo_regular = ImageSpecField(source='photo',
-        processors=[ResizeToFill(296, 296)],
+        options={'quality': 75})
+    photo_admin_thumbnail = ImageSpecField(source='photo',
+        processors=[ResizeToFit(100),Adjust(color=1.1)],
         format='JPEG',
         options={'quality': 60})
     photo_display = ImageSpecField(source='photo',
-        processors=[ResizeToFill(800, 600)],
+        processors=[ResizeToFit(1024)],
         format='JPEG',
-        options={'quality': 60})
+        options={'quality': 90})
     taken_by = models.CharField(max_length=100, blank=True)
     license = models.URLField(blank=True, choices=LICENSES)
     description = models.TextField(blank=True)

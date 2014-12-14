@@ -1,11 +1,11 @@
-{% if object.display %}
+{% if object.photo_thumbnail %}
 <!--
 <a rel="lightbox" href="{{ object.display.url }}">
 -->
 <img
-	src="{{ object.thumbnail.url }}"
-	width="{{ object.thumbnail.width }}"
-	height="{{ object.thumbnail.height }}"
+	src="{{ object.photo_thumbnail.url }}"
+	width="{{ object.photo_thumbnail.width }}"
+	height="{{ object.photo_thumbnail.height }}"
 	alt="{{ object.title }}"
 	title="{{ object.title }}" />
 <!--
