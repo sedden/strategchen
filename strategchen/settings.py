@@ -72,6 +72,10 @@ MEDIA_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
+# http://django-imagekit.readthedocs.org/en/latest/configuration.html
+IMAGEKIT_CACHEFILE_DIR = 'cache/images'
+IMAGEKIT_CACHE_BACKEND = 'default'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'w=!f@&2n-573my!76!jkzw*=ajp8z#srx-f31yi9+bdp6^$np9'
 
