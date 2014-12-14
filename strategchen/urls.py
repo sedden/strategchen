@@ -5,7 +5,7 @@ from django.contrib.sitemaps import GenericSitemap
 from django.contrib.auth.decorators import login_required
 
 from blog.models import Entry
-#from blog.feeds import LatestEntriesAtom
+from blog.feeds import LatestEntries, LatestEntriesAtom
 from flatpages.sitemaps import FlatPageSitemap
 
 archive_common = {
@@ -77,15 +77,12 @@ if 'django.contrib.sitemaps' in settings.INSTALLED_APPS:
         ),
     )
 
-## Feeds
-#if 'django.contrib.syndication' in settings.INSTALLED_APPS:
-#    urlpatterns += patterns('',
-#        (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {
-#            'feed_dict': {
-#                'atom': LatestEntriesAtom,
-#            } }
-#        ),
-#    )
+# Feeds
+if 'django.contrib.syndication' in settings.INSTALLED_APPS:
+    urlpatterns += patterns('',
+        (r'^feeds/atom/$', LatestEntriesAtom()),
+        (r'^feeds/rss/$', LatestEntries()),
+    )
 
 # Blog
 if 'blog' in settings.INSTALLED_APPS:
