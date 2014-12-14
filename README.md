@@ -37,6 +37,10 @@ Server starten, Variante 2:
 
     foreman start
 
+Statt SQLite eine lokale PostgreSQL DB (strategchen) verwenden:
+
+    export DATABASE_URL="postgresql:///strategchen"
+
 #### Aufruf der Webseite: 
 
 Nach Variante 1: <http://localhost:8000/>
