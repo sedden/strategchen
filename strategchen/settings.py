@@ -69,8 +69,8 @@ AWS_HEADERS = {
 #    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
     'Cache-Control': 'max-age=86400',
 }
-from S3 import CallingFormat
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+#from S3 import CallingFormat
+#AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 
 MEDIA_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 #MEDIA_URL = '/media/'
