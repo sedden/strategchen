@@ -60,8 +60,9 @@ STATICFILES_DIRS = (
 )
 
 # Media Storage
-AWS_QUERYSTRING_AUTH = False
+AWS_QUERYSTRING_AUTH = True
 AWS_S3_SECURE_URLS = True
+AWS_S3_FILE_OVERWRITE = False
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
@@ -71,6 +72,7 @@ AWS_HEADERS = {
 }
 #from S3 import CallingFormat
 #AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+
 
 MEDIA_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 #MEDIA_URL = '/media/'
