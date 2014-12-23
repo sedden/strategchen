@@ -4,10 +4,8 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-FORCE_SCRIPT_NAME=""
-#PREPEND_WWW = not DEBUG
 
 ADMINS = (
     ('Susann Jenkner', 'info@strategchen.com'),
