@@ -70,7 +70,8 @@ from boto.s3.connection import OrdinaryCallingFormat
 AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 
-MEDIA_URL = 'https://%s/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = 'http://%s/' % AWS_STORAGE_BUCKET_NAME
+#MEDIA_URL = 'https://s3-eu-west-1.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 #MEDIA_URL = '/media/'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
