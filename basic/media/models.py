@@ -93,10 +93,10 @@ class Photo(models.Model):
         processors=[ResizeToFit(100),Adjust(color=1.1)],
         format='JPEG',
         options={'quality': 60})
-    photo_display = ImageSpecField(source='photo',
-        processors=[ResizeToFit(1024)],
-        format='JPEG',
-        options={'quality': 90})
+    #photo_display = ImageSpecField(source='photo',
+    #    processors=[ResizeToFit(1024)],
+    #    format='JPEG',
+    #    options={'quality': 90})
     taken_by = models.CharField(max_length=100, blank=True)
     license = models.URLField(blank=True, choices=LICENSES)
     description = models.TextField(blank=True)

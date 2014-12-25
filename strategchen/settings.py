@@ -58,8 +58,6 @@ STATICFILES_DIRS = (
 )
 
 # Media Storage
-AWS_QUERYSTRING_AUTH = True
-AWS_S3_SECURE_URLS = True
 AWS_S3_FILE_OVERWRITE = False
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -68,11 +66,11 @@ AWS_HEADERS = {
 #    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
     'Cache-Control': 'max-age=86400',
 }
-#from S3 import CallingFormat
-#AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+from boto.s3.connection import OrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 
-
-MEDIA_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = 'https://%s/' % AWS_STORAGE_BUCKET_NAME
 #MEDIA_URL = '/media/'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
