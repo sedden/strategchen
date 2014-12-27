@@ -31,15 +31,15 @@ import dj_database_url
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.config()
 
-# Celery
-if 'IRON_MQ_PROJECT_ID' in os.environ:
-    BROKER_URL = 'ironmq://%(IRON_MQ_PROJECT_ID)s:%(IRON_MQ_TOKEN)s@' % os.environ
-
-    #CELERY_ACCEPT_CONTENT = ['json']
-    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
-    #CELERY_TASK_SERIALIZER = 'json'
-    #CELERY_RESULT_BACKEND = 'ironcache://project_id:token@'
-    #CELERY_RESULT_SERIALIZER = 'json'
+## Celery
+#if 'IRON_MQ_PROJECT_ID' in os.environ:
+#    BROKER_URL = 'ironmq://%(IRON_MQ_PROJECT_ID)s:%(IRON_MQ_TOKEN)s@' % os.environ
+#
+#    #CELERY_ACCEPT_CONTENT = ['json']
+#    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+#    #CELERY_TASK_SERIALIZER = 'json'
+#    #CELERY_RESULT_BACKEND = 'ironcache://project_id:token@'
+#    #CELERY_RESULT_SERIALIZER = 'json'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -92,8 +92,11 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 IMAGEKIT_CACHEFILE_DIR = 'cache/images'
 IMAGEKIT_CACHE_BACKEND = 'default'
 IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = 'imagekit.cachefiles.strategies.Optimistic'
-if BROKER_URL:
-    IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.Celery'
+try:
+    if BROKER_URL:
+        IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.Celery'
+except NameError:
+    pass
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'w=!f@&2n-573my!76!jkzw*=ajp8z#srx-f31yi9+bdp6^$np9'
