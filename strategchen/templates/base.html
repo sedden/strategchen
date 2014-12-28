@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-{% load cache i18n objectlist disqus_tags %}
+{% load cache i18n objectlist disqus_tags staticfiles %}
 <html version="XHTML+RDFa 1.0" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -43,19 +43,19 @@
   {% endfor %}{% endspaceless %}
   {% endcache %}
 
-  <link href="{{ STATIC_URL }}css/reset.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ STATIC_URL }}css/960.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ STATIC_URL }}css/uni-form.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ STATIC_URL }}css/style.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href={% static "css/reset.css" %} media="screen" rel="stylesheet" type="text/css" />
+  <link href={% static "css/960.css" %} media="screen" rel="stylesheet" type="text/css" />
+  <link href={% static "css/uni-form.css" %} media="screen" rel="stylesheet" type="text/css" />
+  <link href={% static "css/style.css" %} media="screen" rel="stylesheet" type="text/css" />
 
   <!--
-  <link href="{{ STATIC_URL }}img/favicon.png" rel="shortcut icon"  type="image/png" />
+  <link href={% static "img/favicon.png" %} rel="shortcut icon"  type="image/png" />
   -->
 
   <meta name="google-site-verification" content="pcwgx3d2EeVraU_8jAQkXNuHbMQ9FkTzGp0qfhE2cI0" />
 
-  <script src="{{ STATIC_URL }}js/jquery-1.4.2.min.js" type="text/javascript"></script>
-  <script src="{{ STATIC_URL }}js/jquery.imghover-1.1rc.js" type="text/javascript"></script>
+  <script src={% static "js/jquery-1.4.2.min.js" %} type="text/javascript"></script>
+  <script src={% static "js/jquery.imghover-1.1rc.js" %} type="text/javascript"></script>
   <script type="text/javascript">
   $(document).ready(function(){
     $('img.hover').imghover({suffix: '_hover'});
@@ -90,43 +90,38 @@
 
     {# if user.is_authenticated #}
     <ul><li><a href="#">Strategchen</a></li></ul>
-    <img class="alignright" style="padding-right: 20px;" src="{{ STATIC_URL }}img/about.png" />
+    <img class="alignright" style="padding-right: 20px;" src={% static "img/about.png" %} />
     <ul>
       <ul><li>30 Jahre, wohnt mit Mann, Kindern und Hund im schönen Dresden,
       malt, näht, bastelt, schreibt und freut sich über deinen Besuch hier!
       </li></ul>
     </ul>
-    <p><img src="{{ STATIC_URL }}img/sep.png" /></p>
+    <p><img src={% static "img/sep.png" %} /></p>
     {# endif #}
 
 
 
     <ul>
     <li><a href="http://www.twitter.com/strategchen/" target="_blank"><img
-      class="hover" src="{{ STATIC_URL }}img/followme.png" title="@strategchen"/></a></li>
+           class="hover" src={% static "img/followme.png" %} title="@strategchen"/></a></li>
     <!--
     <li><a href="http://www.twitter.com/strategchen/">@strategchen</a></li>
     {# include "twitter.html" #}
     -->
     </ul>
 
-    <p><img src="{{ STATIC_URL }}img/sep.png" /></p>
+    <p><img src={% static "img/sep.png" %} /></p>
 
     <ul>
     <li><a href="http://de.dawanda.com/shop/mademoisellesieben/" target="_blank"><img
-      class="hover" src="{{ STATIC_URL }}img/dawanda.png" title="Ich bin auch käuflich..." /></a></li>
+           class="hover" src={% static "img/dawanda.png" %} title="Ich bin auch käuflich..." /></a></li>
     <li><a href="http://de.dawanda.com/shop/mademoisellesieben/">Ich bin auch käuflich...</a></li>
     <ul>
       <li>Besuche meinen Mini-Shop bei DaWanda - voll mit kreativen Kleinigkeiten!</li>
     </ul>
     </ul>
 
-    <p><img src="{{ STATIC_URL }}img/sep.png" /></p>
-
-    <!--
-    <p><a href="http://himbeermarmelade.de/farbe.php" title="FARBE BEKENNEN 2010"
-      target="_blank"><img src="{{ STATIC_URL }}img/farbebekennen2010.png" /></a></p>
-    -->
+    <p><img src={% static "img/sep.png" %} /></p>
 
     <ul>
       <li>Archiv</li>
@@ -142,7 +137,7 @@
       </ul>
     </ul>
 
-    <p><img src="{{ STATIC_URL }}img/sep.png" /></p>
+    <p><img src={% static "img/sep.png" %} /></p>
 
     <ul>
     {% if user.is_authenticated %}
