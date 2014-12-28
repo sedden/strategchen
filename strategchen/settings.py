@@ -9,12 +9,16 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Susann Jenkner', 'info@strategchen.com'),
     ('Stefan Jenkner', 'stefan@jenkner.org'),
 )
 
 MANAGERS = ADMINS
 
+# E-Mail
+SERVER_EMAIL = 'webmaster@strategchen.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -110,16 +114,18 @@ LOGIN_REDIRECT_URL = '/'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'django.template.loaders.eggs.Loader',
+#    'django.template.loaders.eggs.Loader',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-)
+#TEMPLATE_CONTEXT_PROCESSORS = (
+#    "django.contrib.auth.context_processors.auth",
+#    "django.core.context_processors.debug",
+#    "django.core.context_processors.i18n",
+#    "django.core.context_processors.media",
+#    "django.core.context_processors.static",
+#    "django.core.context_processors.tz",
+#    "django.contrib.messages.context_processors.messages"
+#)
 
 MIDDLEWARE_CLASSES = (
     #'blog.middleware.FeedburnerMiddleware',
