@@ -48,17 +48,19 @@
   <link href={% static "css/uni-form.css" %} media="screen" rel="stylesheet" type="text/css" />
   <link href={% static "css/style.css" %} media="screen" rel="stylesheet" type="text/css" />
 
-  <!--
-  <link href={% static "img/favicon.png" %} rel="shortcut icon"  type="image/png" />
-  -->
-
   <meta name="google-site-verification" content="pcwgx3d2EeVraU_8jAQkXNuHbMQ9FkTzGp0qfhE2cI0" />
 
   <script src={% static "js/jquery-1.4.2.min.js" %} type="text/javascript"></script>
-  <script src={% static "js/jquery.imghover-1.1rc.js" %} type="text/javascript"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-    $('img.hover').imghover({suffix: '_hover'});
+    $('img.hover').css("-webkit-filter","saturate(0.0)");
+    $('img.hover').hover(
+        function() {
+            $(this).css("-webkit-filter","saturate(1.2)");
+        }, function() {
+            $(this).css("-webkit-filter","saturate(0.0)");
+        }
+    );
   });
   </script>
 
