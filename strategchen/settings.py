@@ -62,15 +62,15 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# Collected static files
+# Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'sitestatic')
-#STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
-# Additional static files
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Media Storage
 AWS_S3_FILE_OVERWRITE = False
