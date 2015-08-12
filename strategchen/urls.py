@@ -90,9 +90,9 @@ if 'blog' in settings.INSTALLED_APPS:
         (r'^blog/', include('blog.urls')),
     )
 
-# / -> Blog
+# / -> Blog, Favicon, ...
 urlpatterns += patterns('django.views.generic.simple',
-    (r'^$', 'redirect_to', {'url': '/blog/', 'permanent': False, } ),
+    (r'^$', 'redirect_to', {'url': '/blog/', 'permanent': False, }),
+    (r'^favicon.ico$', 'redirect_to', {'url': None, 'permanent': True, }),
 )
-
 
