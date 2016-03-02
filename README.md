@@ -1,3 +1,5 @@
+[![Dependency Status](https://www.versioneye.com/user/projects/56d077fb6b21e51635503639/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56d077fb6b21e51635503639)
+
 ### Start der Testumgebung
 
 #### Initiales Setup:
